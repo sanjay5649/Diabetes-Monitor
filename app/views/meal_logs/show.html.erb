@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Meal log #<%= @the_meal_log.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/meal_logs">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_meal_log/<%= @the_meal_log.id %>">
+          Delete meal log
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Meal
+      </dt>
+      <dd>
+        <%= @the_meal_log.meal_id %>
+      </dd>
+
+      <dt>
+        Food item
+      </dt>
+      <dd>
+        <%= @the_meal_log.food_item %>
+      </dd>
+
+      <dt>
+        Carbohydrates
+      </dt>
+      <dd>
+        <%= @the_meal_log.carbohydrates %>
+      </dd>
+
+      <dt>
+        Calories
+      </dt>
+      <dd>
+        <%= @the_meal_log.calories %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meal_log.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meal_log.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit meal log
+    </h2>
+
+    <form action="/modify_meal_log/<%= @the_meal_log.id %>"  method="post" >
+      <div>
+        <label for="meal_id_box">
+          Meal
+        </label>
+
+        <input type="text" id="meal_id_box" name="query_meal_id" value="<%= @the_meal_log.meal_id %>">
+      </div>
+
+      <div>
+        <label for="food_item_box">
+          Food item
+        </label>
+
+        <input type="text" id="food_item_box" name="query_food_item" value="<%= @the_meal_log.food_item %>">
+      </div>
+
+      <div>
+        <label for="carbohydrates_box">
+          Carbohydrates
+        </label>
+
+        <input type="text" id="carbohydrates_box" name="query_carbohydrates" value="<%= @the_meal_log.carbohydrates %>">
+      </div>
+
+      <div>
+        <label for="calories_box">
+          Calories
+        </label>
+
+        <input type="text" id="calories_box" name="query_calories" value="<%= @the_meal_log.calories %>">
+      </div>
+
+      <button>
+        Update meal log
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all blood sugar levels
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new blood sugar level
+    </h2>
+
+    <form action="/insert_blood_sugar_level" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="reading_box">
+          Reading
+        </label>
+
+        <input type="text" id="reading_box" name="query_reading">
+      </div>
+
+      <div>
+        <label for="reading_date_box">
+          Reading date
+        </label>
+
+        <input type="datetime-local" id="reading_date_box" name="query_reading_date">
+      </div>
+
+      <button>
+        Create blood sugar level
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Reading
+        </th>
+
+        <th>
+          Reading date
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_blood_sugar_levels.each do |a_blood_sugar_level| %>
+      <tr>
+        <td>
+          <%= a_blood_sugar_level.id %>
+        </td>
+
+        <td>
+          <%= a_blood_sugar_level.user_id %>
+        </td>
+
+        <td>
+          <%= a_blood_sugar_level.reading %>
+        </td>
+
+        <td>
+          <%= a_blood_sugar_level.reading_date %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_blood_sugar_level.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_blood_sugar_level.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/blood_sugar_levels/<%= a_blood_sugar_level.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

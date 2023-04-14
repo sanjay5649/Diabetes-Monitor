@@ -1,0 +1,166 @@
+<div>
+  <div>
+    <h1>
+      List of all medications
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new medication
+    </h2>
+
+    <form action="/insert_medication" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="dosage_box">
+          Dosage
+        </label>
+
+        <input type="text" id="dosage_box" name="query_dosage">
+      </div>
+
+      <div>
+        <label for="frequency_box">
+          Frequency
+        </label>
+
+        <input type="text" id="frequency_box" name="query_frequency">
+      </div>
+
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="date" id="start_date_box" name="query_start_date">
+      </div>
+
+      <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="date" id="end_date_box" name="query_end_date">
+      </div>
+
+      <button>
+        Create medication
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Dosage
+        </th>
+
+        <th>
+          Frequency
+        </th>
+
+        <th>
+          Start date
+        </th>
+
+        <th>
+          End date
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_medications.each do |a_medication| %>
+      <tr>
+        <td>
+          <%= a_medication.id %>
+        </td>
+
+        <td>
+          <%= a_medication.user_id %>
+        </td>
+
+        <td>
+          <%= a_medication.name %>
+        </td>
+
+        <td>
+          <%= a_medication.dosage %>
+        </td>
+
+        <td>
+          <%= a_medication.frequency %>
+        </td>
+
+        <td>
+          <%= a_medication.start_date %>
+        </td>
+
+        <td>
+          <%= a_medication.end_date %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_medication.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_medication.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/medications/<%= a_medication.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

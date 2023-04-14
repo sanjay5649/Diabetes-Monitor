@@ -1,0 +1,134 @@
+<div>
+  <div>
+    <h1>
+      List of all meal logs
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new meal log
+    </h2>
+
+    <form action="/insert_meal_log" method="post">
+      <div>
+        <label for="meal_id_box">
+          Meal
+        </label>
+
+        <input type="text" id="meal_id_box" name="query_meal_id">
+      </div>
+
+      <div>
+        <label for="food_item_box">
+          Food item
+        </label>
+
+        <input type="text" id="food_item_box" name="query_food_item">
+      </div>
+
+      <div>
+        <label for="carbohydrates_box">
+          Carbohydrates
+        </label>
+
+        <input type="text" id="carbohydrates_box" name="query_carbohydrates">
+      </div>
+
+      <div>
+        <label for="calories_box">
+          Calories
+        </label>
+
+        <input type="text" id="calories_box" name="query_calories">
+      </div>
+
+      <button>
+        Create meal log
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Meal
+        </th>
+
+        <th>
+          Food item
+        </th>
+
+        <th>
+          Carbohydrates
+        </th>
+
+        <th>
+          Calories
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_meal_logs.each do |a_meal_log| %>
+      <tr>
+        <td>
+          <%= a_meal_log.id %>
+        </td>
+
+        <td>
+          <%= a_meal_log.meal_id %>
+        </td>
+
+        <td>
+          <%= a_meal_log.food_item %>
+        </td>
+
+        <td>
+          <%= a_meal_log.carbohydrates %>
+        </td>
+
+        <td>
+          <%= a_meal_log.calories %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_meal_log.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_meal_log.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/meal_logs/<%= a_meal_log.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

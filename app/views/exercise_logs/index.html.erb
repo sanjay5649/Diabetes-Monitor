@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all exercise logs
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new exercise log
+    </h2>
+
+    <form action="/insert_exercise_log" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="exercise_name_box">
+          Exercise name
+        </label>
+
+        <input type="text" id="exercise_name_box" name="query_exercise_name">
+      </div>
+
+      <div>
+        <label for="duration_minutes_box">
+          Duration minutes
+        </label>
+
+        <input type="text" id="duration_minutes_box" name="query_duration_minutes">
+      </div>
+
+      <div>
+        <label for="calories_burned_box">
+          Calories burned
+        </label>
+
+        <input type="text" id="calories_burned_box" name="query_calories_burned">
+      </div>
+
+      <div>
+        <label for="exercise_date_box">
+          Exercise date
+        </label>
+
+        <input type="date" id="exercise_date_box" name="query_exercise_date">
+      </div>
+
+      <button>
+        Create exercise log
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Exercise name
+        </th>
+
+        <th>
+          Duration minutes
+        </th>
+
+        <th>
+          Calories burned
+        </th>
+
+        <th>
+          Exercise date
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_exercise_logs.each do |an_exercise_log| %>
+      <tr>
+        <td>
+          <%= an_exercise_log.id %>
+        </td>
+
+        <td>
+          <%= an_exercise_log.user_id %>
+        </td>
+
+        <td>
+          <%= an_exercise_log.exercise_name %>
+        </td>
+
+        <td>
+          <%= an_exercise_log.duration_minutes %>
+        </td>
+
+        <td>
+          <%= an_exercise_log.calories_burned %>
+        </td>
+
+        <td>
+          <%= an_exercise_log.exercise_date %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_exercise_log.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_exercise_log.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/exercise_logs/<%= an_exercise_log.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

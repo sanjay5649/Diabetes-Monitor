@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Exercise log #<%= @the_exercise_log.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/exercise_logs">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_exercise_log/<%= @the_exercise_log.id %>">
+          Delete exercise log
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_exercise_log.user_id %>
+      </dd>
+
+      <dt>
+        Exercise name
+      </dt>
+      <dd>
+        <%= @the_exercise_log.exercise_name %>
+      </dd>
+
+      <dt>
+        Duration minutes
+      </dt>
+      <dd>
+        <%= @the_exercise_log.duration_minutes %>
+      </dd>
+
+      <dt>
+        Calories burned
+      </dt>
+      <dd>
+        <%= @the_exercise_log.calories_burned %>
+      </dd>
+
+      <dt>
+        Exercise date
+      </dt>
+      <dd>
+        <%= @the_exercise_log.exercise_date %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_exercise_log.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_exercise_log.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit exercise log
+    </h2>
+
+    <form action="/modify_exercise_log/<%= @the_exercise_log.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_exercise_log.user_id %>">
+      </div>
+
+      <div>
+        <label for="exercise_name_box">
+          Exercise name
+        </label>
+
+        <input type="text" id="exercise_name_box" name="query_exercise_name" value="<%= @the_exercise_log.exercise_name %>">
+      </div>
+
+      <div>
+        <label for="duration_minutes_box">
+          Duration minutes
+        </label>
+
+        <input type="text" id="duration_minutes_box" name="query_duration_minutes" value="<%= @the_exercise_log.duration_minutes %>">
+      </div>
+
+      <div>
+        <label for="calories_burned_box">
+          Calories burned
+        </label>
+
+        <input type="text" id="calories_burned_box" name="query_calories_burned" value="<%= @the_exercise_log.calories_burned %>">
+      </div>
+
+      <div>
+        <label for="exercise_date_box">
+          Exercise date
+        </label>
+
+        <input type="date" id="exercise_date_box" name="query_exercise_date" value="<%= @the_exercise_log.exercise_date %>">
+      </div>
+
+      <button>
+        Update exercise log
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
