@@ -1,21 +1,17 @@
-<div>
-  <div>
-    <h1>
-      List of all meal logs
+<div class="row">
+  <div class="offset-md-3 col-md-6">
+    <h1 class="display-6">
+      Meal logs
     </h1>
-  </div>
-</div>
 
-<hr>
+    <hr>
 
-<div>
-  <div>
     <h2>
       Add a new meal log
     </h2>
 
     <form action="/insert_meal_log" method="post">
-    <div>
+      <div>
 
         <input type="text" id="user_id_box" name="query_user_id" value ="<%= session.fetch(:user_id) %>" hidden>
       </div>
@@ -25,47 +21,47 @@
         <input type="text" id="meal_id_box" name="query_meal_id" value="0" hidden>
       </div>
 
-      <div>
-        <label for="food_item_box">
+      <div class="mb-3">
+        <label for="food_item_box" class="form-label">
           Food item
         </label>
 
-        <input type="text" id="food_item_box" name="query_food_item">
+        <input type="text" id="food_item_box" name="query_food_item" class="form-control">
       </div>
 
-      <div>
-        <label for="carbohydrates_box">
+      <div class="mb-3">
+        <label for="carbohydrates_box" class="form-label">
           Carbohydrates
         </label>
 
-        <input type="text" id="carbohydrates_box" name="query_carbohydrates">
+        <input type="text" id="carbohydrates_box" name="query_carbohydrates" class="form-control">
       </div>
 
-      <div>
-        <label for="calories_box">
+      <div class="mb-3">
+        <label for="calories_box" class="form-label">
           Calories
         </label>
 
-        <input type="text" id="calories_box" name="query_calories">
+        <input type="text" id="calories_box" name="query_calories" class="form-control">
       </div>
 
-      <button>
-        Create meal log
-      </button>
+      <div class="d-grid">
+        <button class="btn btn-outline-primary">
+          Create meal log
+        </button>
+      </div>
     </form>
   </div>
 </div>
-
 <hr>
-<div>
-  <div>
-    <table border="1">
+
+<div class="row">
+  <div class="table-responsive">
+    <table class="table">
       <tr>
         <th>
           ID
         </th>
-
-        
 
         <th>
           Food item
@@ -92,41 +88,37 @@
       </tr>
 
       <% @list_of_meal_logs.each do |a_meal_log| %>
-      <tr>
-        <td>
-          <%= a_meal_log.id %>
-        </td>
+        <tr>
+          <td>
+            <%= a_meal_log.id %>
+          </td>
 
-        
+          <td>
+            <%= a_meal_log.food_item %>
+          </td>
 
-        <td>
-          <%= a_meal_log.food_item %>
-        </td>
+          <td>
+            <%= a_meal_log.carbohydrates %>
+          </td>
 
-        <td>
-          <%= a_meal_log.carbohydrates %>
-        </td>
+          <td>
+            <%= a_meal_log.calories %>
+          </td>
 
-        <td>
-          <%= a_meal_log.calories %>
-        </td>
+          <td>
+            <%= time_ago_in_words(a_meal_log.created_at) %> ago
+          </td>
+          <td>
+            <%= time_ago_in_words(a_meal_log.updated_at) %> ago
+          </td>
 
-        <td>
-          <%= time_ago_in_words(a_meal_log.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_meal_log.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/meal_logs/<%= a_meal_log.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <a href="/meal_logs/<%= a_meal_log.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>
 </div>
-
-<hr>
