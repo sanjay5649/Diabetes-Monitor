@@ -1,6 +1,8 @@
 class ExerciseLogsController < ApplicationController
   def index
-    matching_exercise_logs = ExerciseLog.all
+    the_id = session.fetch(:user_id)
+
+    matching_exercise_logs = ExerciseLog.where({ :user_id => the_id })
 
     @list_of_exercise_logs = matching_exercise_logs.order({ :created_at => :desc })
 
@@ -10,7 +12,7 @@ class ExerciseLogsController < ApplicationController
   def show
     the_id = params.fetch("path_id")
 
-    matching_exercise_logs = ExerciseLog.where({ :id => the_id })
+    matching_exercise_logs = ExerciseLog.all
 
     @the_exercise_log = matching_exercise_logs.at(0)
 

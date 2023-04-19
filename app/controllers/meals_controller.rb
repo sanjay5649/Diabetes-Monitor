@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   def index
+    the_id = session.fetch(:user_id)
     matching_meals = Meal.all
 
     @list_of_meals = matching_meals.order({ :created_at => :desc })

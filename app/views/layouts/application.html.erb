@@ -14,7 +14,25 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
   </head>
-
+  <div>
+  <h1>Diabetes Management</h1>
+  </div>
+  <% if session.fetch(:user_id).present? %>
+  <a href="/exercise_logs">Excerise Log</a> |
+  <a href="/meal_logs">Meal Log</a> |
+  <a href="/blood_sugar_levels">Blood sugar levels Log</a> |
+  <a href="/medications">Medications</a>
+  <br>
+  <br>
+  <a href="/user_sign_out">Sign out</a> |
+  <a href="/edit_user_profile">Edit profile</a>
+  <% else %>
+  <a href="/user_sign_in">Sign in</a> |
+  <a href="/user_sign_up">Sign up</a>
+  <% end  %>
+  <% if @current_user.present?  %>
+  <h3>Hi <%= @current_user.first_name %> <%= @current_user.last_name %>!</h3>
+  <% end %>
   <body>
     <%= yield %>
   </body>

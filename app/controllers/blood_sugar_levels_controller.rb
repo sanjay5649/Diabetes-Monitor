@@ -1,10 +1,16 @@
 class BloodSugarLevelsController < ApplicationController
   def index
-    matching_blood_sugar_levels = BloodSugarLevel.all
+    the_id = session.fetch(:user_id)
+
+    if the_id == nil
+      redirect_to("/user_sign_in", {:notice => "You have to sign in first."})
+    else
+    matching_blood_sugar_levels = BloodSugarLevel.where({ :user_id => the_id })
 
     @list_of_blood_sugar_levels = matching_blood_sugar_levels.order({ :created_at => :desc })
 
     render({ :template => "blood_sugar_levels/index.html.erb" })
+    end
   end
 
   def show

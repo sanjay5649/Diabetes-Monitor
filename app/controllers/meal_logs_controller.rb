@@ -1,6 +1,7 @@
 class MealLogsController < ApplicationController
   def index
-    matching_meal_logs = MealLog.all
+    the_id = session.fetch(:user_id)
+    matching_meal_logs = MealLog.where({ :user_id => the_id })
 
     @list_of_meal_logs = matching_meal_logs.order({ :created_at => :desc })
 
@@ -19,6 +20,7 @@ class MealLogsController < ApplicationController
 
   def create
     the_meal_log = MealLog.new
+    the_meal_log.user_id = params.fetch("query_user_id")
     the_meal_log.meal_id = params.fetch("query_meal_id")
     the_meal_log.food_item = params.fetch("query_food_item")
     the_meal_log.carbohydrates = params.fetch("query_carbohydrates")

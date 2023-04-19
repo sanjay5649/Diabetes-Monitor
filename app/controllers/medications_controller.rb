@@ -1,6 +1,8 @@
 class MedicationsController < ApplicationController
   def index
-    matching_medications = Medication.all
+
+    the_id = session.fetch(:user_id)
+    matching_medications = Medication.where({ :user_id => the_id })
 
     @list_of_medications = matching_medications.order({ :created_at => :desc })
 

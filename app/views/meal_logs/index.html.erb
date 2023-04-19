@@ -15,12 +15,14 @@
     </h2>
 
     <form action="/insert_meal_log" method="post">
-      <div>
-        <label for="meal_id_box">
-          Meal
-        </label>
+    <div>
 
-        <input type="text" id="meal_id_box" name="query_meal_id">
+        <input type="text" id="user_id_box" name="query_user_id" value ="<%= session.fetch(:user_id) %>" hidden>
+      </div>
+
+      <div>
+
+        <input type="text" id="meal_id_box" name="query_meal_id" value="0" hidden>
       </div>
 
       <div>
@@ -63,9 +65,7 @@
           ID
         </th>
 
-        <th>
-          Meal
-        </th>
+        
 
         <th>
           Food item
@@ -97,9 +97,7 @@
           <%= a_meal_log.id %>
         </td>
 
-        <td>
-          <%= a_meal_log.meal_id %>
-        </td>
+        
 
         <td>
           <%= a_meal_log.food_item %>

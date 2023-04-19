@@ -16,11 +16,10 @@
 
     <form action="/insert_exercise_log" method="post">
       <div>
-        <label for="user_id_box">
-          User
-        </label>
 
-        <input type="text" id="user_id_box" name="query_user_id">
+
+        <input type="text" id="user_id_box" name="query_user_id" value ="<%= session.fetch(:user_id) %>" hidden>
+        
       </div>
 
       <div>
